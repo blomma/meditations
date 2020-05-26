@@ -1,0 +1,33 @@
+{
+    "total": 7,
+    "results": [
+        {
+            "id": "1",
+            "label": "How many woodschusck can you schykket"
+        },
+        {
+            "id": "2",
+            "label": "How do you feel about the previous question"
+        },
+        {
+            "id": "3",
+            "label": "Rate your feet"
+        },
+        {
+            "id": "4",
+            "label": "Rate your hands"
+        },
+        {
+            "id": "5",
+            "label": "Rate your penguins"
+        },
+        {
+            "id": "6",
+            "label": "Rate your knitting"
+        },
+        {
+            "id": "7",
+            "label": "Rate your folly"
+        }
+    ]
+}
