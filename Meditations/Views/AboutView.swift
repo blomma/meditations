@@ -62,56 +62,17 @@ struct AboutView: View {
                     makeRow(image: "chevron.left.slash.chevron.right",
                             text: "Souce code / report an issue", color: .acHeaderBackground)
                         .onTapGesture {
-                            self.selectedSheet = .safari(URL(string: "https://github.com/Dimillian/ACHNBrowserUI")!)
+                            self.selectedSheet = .safari(URL(string: "https://github.com/blomma/meditations")!)
                         }
-                    makeRow(image: "star.fill",
-                            text: "Rate the app on the App Store", color: .acHeaderBackground)
-                        .onTapGesture {
-                            UIApplication.shared.open(URL(string: "itms-apps://itunes.apple.com/app/1508764244?action=write-review")!,
-                                                      options: [:],
-                                                      completionHandler: nil)
-                        }
-                    makeRow(image: "lock", text: "Privacy Policy", color: .acHeaderBackground).onTapGesture {
-                        self.selectedSheet = .safari(URL(string: "https://github.com/Dimillian/ACHNBrowserUI/blob/master/privacy-policy.md#ac-helper-privacy-policy")!)
-                    }
-                    makeRow(image: "person", text: "Terms of Use", color: .acHeaderBackground).onTapGesture {
-                        self.selectedSheet = .safari(URL(string: "https://github.com/Dimillian/ACHNBrowserUI/blob/master/term-of-use.md#ac-helper-term-of-use")!)
-                    }
                     makeDetailRow(image: "tag",
                                   text: "App version",
                                   detail: "\(versionNumber) (\(buildNumber))",
-                                  color: .acHeaderBackground)
-                    makeDetailRow(image: "gamecontroller",
-                                  text: "Game patch data",
-                                  detail: "1.2.0",
                                   color: .acHeaderBackground)
                 }
                 Section(header: SectionHeaderView(text: "Acknowledgements")) {
                     makeRow(image: "suit.heart.fill", text: "Our amazing contributors", color: .red)
                         .onTapGesture {
-                            self.selectedSheet = .safari(URL(string: "https://github.com/Dimillian/ACHNBrowserUI/graphs/contributors")!)
-                        }
-                    makeRow(image: "suit.heart.fill", text: "The NookPlaza API by Azarro", color: .red)
-                        .onTapGesture {
-                            self.selectedSheet = .safari(URL(string: "https://nookplaza.net/")!)
-                        }
-                    makeRow(image: "suit.heart.fill", text: "Turnip.exchange", color: .red)
-                        .onTapGesture {
-                            self.selectedSheet = .safari(URL(string: "https://turnip.exchange/")!)
-                        }
-                    makeRow(image: "suit.heart.fill", text: "Nookazon for the marketplace", color: .red)
-                        .onTapGesture {
-                            self.selectedSheet = .safari(URL(string: "https://nookazon.com/")!)
-                        }
-                    makeRow(image: "suit.heart.fill", text: "Shihab / JPEGuin for the icon", color: .red)
-                        .onTapGesture {
-                            self.selectedSheet = .safari(URL(string: "https://twitter.com/JPEGuin")!)
-                        }
-                    makeRow(image: "suit.heart.fill",
-                            text: "Christian & Ninji for the turnip predictions algorithm",
-                            color: .red)
-                        .onTapGesture {
-                            self.selectedSheet = .safari(URL(string: "https://elxris.github.io/Turnip-Calculator/")!)
+                            self.selectedSheet = .safari(URL(string: "https://github.com/blomma/meditations/graphs/contributors")!)
                         }
                 }
             }

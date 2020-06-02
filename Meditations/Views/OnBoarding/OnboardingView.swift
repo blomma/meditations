@@ -44,6 +44,5 @@ struct OnBoardingView: View {
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         OnBoardingView()
-            .padding()
     }
 }
