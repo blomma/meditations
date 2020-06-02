@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1150"
-   version = "1.3">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -94,5 +94,23 @@
    <ArchiveAction
       buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "PLIST=&quot;${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}/Info.plist&quot;&#10;PLB=/usr/libexec/PlistBuddy&#10;BRANCH=${1:-&apos;master&apos;}&#10;BUILDNUMBER=$(expr $(git -C ${PROJECT_DIR} rev-list $BRANCH --count) + $(git -C ${PROJECT_DIR} rev-list $BRANCH..HEAD --count))&#10;$PLB -c &quot;Set :CFBundleVersion $BUILDNUMBER&quot; &quot;$PLIST&quot;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "9E80C2C3246B3DC4008D3409"
+                     BuildableName = "Meditations.app"
+                     BlueprintName = "Meditations"
+                     ReferencedContainer = "container:Meditations.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
    </ArchiveAction>
 </Scheme>
