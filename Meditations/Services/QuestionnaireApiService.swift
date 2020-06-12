@@ -17,8 +17,8 @@ public struct QuestionnaireApiService {
                 throw APIError.message(reason: "Error while loading local ressource")
             }
 
-            let d = try Data(contentsOf: url)
-            let t = try decoder.decode(T.self, from: d)
+//            let d = try Data(contentsOf: url)
+//            let t = try decoder.decode(T.self, from: d)
 
             return try Data(contentsOf: url)
         })
