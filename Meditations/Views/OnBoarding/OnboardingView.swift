@@ -6,21 +6,17 @@ struct OnBoardingView: View {
 
     var body: some View {
         Form {
-            Section {
-                VStack(alignment: .leading) {
-                    ForEach(viewModel.questions) { question in
-                        QuestionView(
-                            question: question,
-                            rating: self.$viewModel.ratings[unchecked: question.id],
-                            header: self.viewModel.header(for: question)
-                        )
-                    }
-                    
-                    
+            VStack {
+                ForEach(viewModel.questions) { question in
+                    QuestionView(
+                        question: question,
+                        rating: self.$viewModel.ratings[unchecked: question.id],
+                        header: self.viewModel.header(for: question)
+                    )
+                    .padding(.bottom, 20)
                 }
             }
         }
-        .listStyle(GroupedListStyle())
         .environment(\.horizontalSizeClass, .regular)
     }
 

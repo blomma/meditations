@@ -25,13 +25,13 @@ struct QuestionView: View {
         }
     }
 
-    private func subsectionHeader(_ text: String) -> some View {
-        Text(LocalizedStringKey(text))
-            .font(.system(.caption, design: .rounded))
-            .fontWeight(.bold)
-            .foregroundColor(Color.acSecondaryText)
-            .padding(.top, 4)
-    }
+//    private func subsectionHeader(_ text: String) -> some View {
+//        Text(LocalizedStringKey(text))
+//            .font(.system(.caption, design: .rounded))
+//            .fontWeight(.bold)
+//            .foregroundColor(Color.acSecondaryText)
+//            .padding(.top, 4)
+//    }
 
     private func makeLabel(_ text: String) -> some View {
         Text(LocalizedStringKey(text))

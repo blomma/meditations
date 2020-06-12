@@ -43,6 +43,7 @@
 		9E80C31C246C7C70008D3409 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E80C31B246C7C70008D3409 /* Image.swift */; };
 		9E80C31E2472DCB4008D3409 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E80C31D2472DCB4008D3409 /* OnboardingView.swift */; };
 		9E80C3212472ED94008D3409 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E80C3202472ED94008D3409 /* PageViewController.swift */; };
+		9EAC9A742493F31900556401 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAC9A732493F31900556401 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		9E80C31B246C7C70008D3409 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		9E80C31D2472DCB4008D3409 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		9E80C3202472ED94008D3409 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		9EAC9A732493F31900556401 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,7 @@
 				9E80C308246C6E18008D3409 /* AboutView.swift */,
 				9E80C30A246C74C7008D3409 /* SettingsView.swift */,
 				9E80C312246C79CD008D3409 /* SafariView.swift */,
+				9EAC9A732493F31900556401 /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				9E80C318246C7ADB008D3409 /* View.swift in Sources */,
 				9E80C31C246C7C70008D3409 /* Image.swift in Sources */,
 				9E80C30E246C766B008D3409 /* BorderedBarButtonStyle.swift in Sources */,
+				9EAC9A742493F31900556401 /* HomeView.swift in Sources */,
 				9E65ABBC247BD36100A38FCF /* Binding.swift in Sources */,
 				9E80C31E2472DCB4008D3409 /* OnboardingView.swift in Sources */,
 				9E80C2CD246B3DC4008D3409 /* Meditations.xcdatamodeld in Sources */,
