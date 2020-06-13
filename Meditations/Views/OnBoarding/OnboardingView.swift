@@ -4,37 +4,35 @@ import SwiftUI
 struct OnBoardingView: View {
     @ObservedObject private var viewModel: OnBoardingViewModel = OnBoardingViewModel()
 
+    @State private var index: Int = 0
+
     var body: some View {
-        Form {
-            VStack {
-                ForEach(viewModel.questions) { question in
-                    QuestionView(
-                        question: question,
-                        rating: self.$viewModel.ratings[unchecked: question.id],
-                        header: self.viewModel.header(for: question)
-                    )
-                    .padding(.bottom, 20)
+        VStack {
+            SwiperView(viewModel: self.viewModel, index: self.$index)
+            HStack(spacing: 8) {
+                ForEach(0 ..< self.viewModel.questions.count, id: \.self) { index in
+                    self.makeSwipeButton(isSelected: Binding(get: { self.index == index }, set: { _ in })) {
+                        withAnimation {
+                            self.index = index
+                        }
+                    }
                 }
             }
+            .padding(.bottom, 12)
         }
+        .background(Color.acBackground)
         .environment(\.horizontalSizeClass, .regular)
     }
-
-//    func selectedQuestion(id: String) -> Binding<Question> {
-//        guard let index = self.viewModel.questions.firstIndex(where: { $0.id == id }) else {
-//            fatalError("This question does not exist.")
-//        }
-//
-//        return self.$viewModel.questions[index]
-//    }
-
-//    func selectedRating(for id: String) -> Binding<Rating> {
-//        guard let index = self.viewModel.answers.firstIndex(where: {$0.questionId == id}) else {
-//            fatalError("This question does not exist.")
-//        }
-//
-//        return self.$viewModel.answers[index].rating
-//    }
+    
+    private func makeSwipeButton(isSelected: Binding<Bool>, action: @escaping () -> Void) -> some View {
+        Button(action: {
+            action()
+        }) {
+            Circle()
+                .frame(width: 16, height: 16)
+                .foregroundColor(isSelected.wrappedValue ? Color.black : Color.black.opacity(0.5))
+        }
+    }
 }
 
 struct OnboardingView_Previews: PreviewProvider {

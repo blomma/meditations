@@ -46,9 +46,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UITabBar.appearance().barTintColor = UIColor(named: "ACTabBarTint")
             UITabBar.appearance().backgroundColor = UIColor(named: "ACTabBarTint")
 
-            UIPageControl.appearance().backgroundColor = UIColor(named: "ACBackground")
-            UIPageControl.appearance().tintColor = UIColor(named: "ACText")
-
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window

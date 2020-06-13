@@ -48,9 +48,7 @@ struct QuestionView_Previews: PreviewProvider {
 
     static var previews: some View {
         Form {
-            Section {
-                QuestionView(question: q, rating: $r, header: "test")
-            }
+            QuestionView(question: q, rating: $r, header: "test")
         }
         .listStyle(GroupedListStyle())
         .environment(\.horizontalSizeClass, .regular)
