@@ -9,7 +9,13 @@ class OnBoardingViewModel: ObservableObject {
     @Published var currentPage: Int = 1
     @Published var ratings: [String: Rating] = [:]
 
-    public var noOfQuestionsPerPage = 3
+    public let noOfQuestionsPerPage = 3
+
+    public var sectionCount: Int {
+        get {
+            return Int((Double(questions.count) / Double(noOfQuestionsPerPage)).rounded(FloatingPointRoundingRule.up))
+        }
+    }
 
     init() {
         questionsCancellable = Questions.shared.$questions.sink { [weak self] questions in
@@ -22,8 +28,9 @@ class OnBoardingViewModel: ObservableObject {
 
     func questions(for section: Int) -> [Question] {
         let startIndex = section * noOfQuestionsPerPage
-        let endIndex = startIndex + noOfQuestionsPerPage
+        var endIndex = startIndex + noOfQuestionsPerPage - 1
 
+        endIndex = min(endIndex, questions.count - 1)
         return Array(questions[startIndex ... endIndex])
     }
 

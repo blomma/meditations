@@ -3,14 +3,13 @@ import SwiftUI
 
 struct OnBoardingView: View {
     @ObservedObject private var viewModel: OnBoardingViewModel = OnBoardingViewModel()
-
     @State private var index: Int = 0
 
     var body: some View {
         VStack {
             SwiperView(viewModel: self.viewModel, index: self.$index)
             HStack(spacing: 8) {
-                ForEach(0 ..< self.viewModel.questions.count, id: \.self) { index in
+                ForEach(0 ..< self.viewModel.sectionCount, id: \.self) { index in
                     self.makeSwipeButton(isSelected: Binding(get: { self.index == index }, set: { _ in })) {
                         withAnimation {
                             self.index = index

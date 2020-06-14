@@ -11,20 +11,31 @@ struct SwiperView: View {
         GeometryReader { geometry in
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .center, spacing: 0) {
-                    ForEach(self.viewModel.questions) { question in
-                        QuestionView(
-                            question: question,
-                            rating: self.$viewModel.ratings[unchecked: question.id],
-                            header: self.viewModel.header(for: question)
-                        )
-                        .frame(width: geometry.size.width,
-                               height: geometry.size.height)
+                    // TODO: Hakishc
+                    if self.viewModel.sectionCount > 0 {
+                        ForEach(0...self.viewModel.sectionCount - 1, id: \.self) { sectionIndex in
+                            VStack {
+                                ForEach(self.viewModel.questions(for: sectionIndex)) { question in
+                                    QuestionView(
+                                        question: question,
+                                        rating: self.$viewModel.ratings[unchecked: question.id],
+                                        header: self.viewModel.header(for: question)
+                                    )
+                                    .padding()
+                                }
+                                Spacer()
+                            }
+                            .padding()
+                            .frame(width: geometry.size.width,
+                                   height: geometry.size.height)
+                        }
                     }
                 }
             }
             .content
             .offset(x: self.isUserSwiping ? self.offset : CGFloat(self.index) * -geometry.size.width)
             .frame(width: geometry.size.width, alignment: .leading)
+            .contentShape(Rectangle())
             .gesture(
                 DragGesture()
                     .onChanged { value in
@@ -35,7 +46,7 @@ struct SwiperView: View {
                         if
                             value.startLocation.x > value.location.x,
                             value.predictedEndTranslation.width < geometry.size.width / 2,
-                            self.index < self.viewModel.questions.count - 1 {
+                            self.index < self.viewModel.sectionCount - 1 {
                             self.index += 1
                         }
                         if
@@ -43,11 +54,20 @@ struct SwiperView: View {
                             self.index > 0 {
                             self.index -= 1
                         }
-                        withAnimation {
+                        withAnimation() {
                             self.isUserSwiping = false
                         }
                     }
             )
         }
+    }
+}
+
+struct SwiperView_Previews: PreviewProvider {
+    @ObservedObject static private var viewModel: OnBoardingViewModel = OnBoardingViewModel()
+    @State static private var index: Int = 0
+
+    static var previews: some View {
+        SwiperView(viewModel: viewModel, index: $index)
     }
 }
