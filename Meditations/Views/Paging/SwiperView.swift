@@ -11,11 +11,10 @@ struct SwiperView: View {
         GeometryReader { geometry in
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .center, spacing: 0) {
-                    // TODO: Hakishc
-                    if self.viewModel.sectionCount > 0 {
-                        ForEach(0...self.viewModel.sectionCount - 1, id: \.self) { sectionIndex in
+                    if self.viewModel.noOfPages > 0 {
+                        ForEach(1...self.viewModel.pageProgress, id: \.self) { page in
                             VStack {
-                                ForEach(self.viewModel.questions(for: sectionIndex)) { question in
+                                ForEach(self.viewModel.questions(for: page)) { question in
                                     QuestionView(
                                         question: question,
                                         rating: self.$viewModel.ratings[unchecked: question.id],
@@ -46,7 +45,7 @@ struct SwiperView: View {
                         if
                             value.startLocation.x > value.location.x,
                             value.predictedEndTranslation.width < geometry.size.width / 2,
-                            self.index < self.viewModel.sectionCount - 1 {
+                        self.index < (self.viewModel.pageProgress - 1) {
                             self.index += 1
                         }
                         if

@@ -9,7 +9,7 @@ struct OnBoardingView: View {
         VStack {
             SwiperView(viewModel: self.viewModel, index: self.$index)
             HStack(spacing: 8) {
-                ForEach(0 ..< self.viewModel.sectionCount, id: \.self) { index in
+                ForEach(0 ... (self.viewModel.pageProgress - 1), id: \.self) { index in
                     self.makeSwipeButton(isSelected: Binding(get: { self.index == index }, set: { _ in })) {
                         withAnimation {
                             self.index = index
