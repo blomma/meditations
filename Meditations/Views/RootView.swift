@@ -9,14 +9,18 @@ struct RootView: View {
 
     @ObservedObject var appUserDefaults = AppUserDefaults.shared
 
+    @State private var selectedSheet: Sheet.SheetType?
+
     var body: some View {
         VStack {
             if self.appUserDefaults.showOnBoarding {
                 OnBoardingView()
             } else {
-                HomeView()
+                HomeView(selectedSheet: $selectedSheet)
             }
         }
+        .sheet(item: $selectedSheet,
+               content: { Sheet(sheetType: $0) })
     }
 }
 

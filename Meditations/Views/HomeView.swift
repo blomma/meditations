@@ -7,7 +7,7 @@ struct HomeView: View {
     // I think this happens because the presentationMode is not inherited from the presenter view, so the presenter didn't know that the modal is already closed. You can fix this by adding presentationMode to presenter, in this case to ContentView.
     @Environment(\.presentationMode) var presentation
 
-    @State private var selectedSheet: Sheet.SheetType?
+    @Binding var selectedSheet: Sheet.SheetType?
     @ObservedObject var appUserDefaults = AppUserDefaults.shared
 
     var body: some View {
@@ -18,8 +18,6 @@ struct HomeView: View {
             .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle(Text("Knowing you"))
             .navigationBarItems(leading: aboutButton, trailing: settingsButton)
-            .sheet(item: $selectedSheet,
-                   content: { Sheet(sheetType: $0) })
         }
     }
 
@@ -51,7 +49,9 @@ struct HomeView: View {
 }
 
 struct HomeView_Previews: PreviewProvider {
+    @State static var selectedSheet: Sheet.SheetType? = Sheet.SheetType.about
+    
     static var previews: some View {
-        HomeView()
+        HomeView(selectedSheet: $selectedSheet)
     }
 }
