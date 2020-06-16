@@ -10,6 +10,10 @@ class OnBoardingViewModel: ObservableObject {
         didSet {
             let questionsRated = ratings.filter { $0.value != Rating.zero }.count
             if questionsRated == questions.count {
+                if questionsRated > 0 {
+                    showDone = true
+                }
+                
                 return
             }
             
@@ -27,9 +31,10 @@ class OnBoardingViewModel: ObservableObject {
 
     let noOfQuestionsPerPage = 3
     @Published var noOfPages = 1
-
     @Published var pageProgress: Int = 1
 
+    @Published var showDone: Bool = false
+    
     init() {
         questionsCancellable = Questions.shared.$questions.sink { [weak self] questions in
             self?.questions = questions

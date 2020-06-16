@@ -12,17 +12,17 @@ struct SettingsView: View {
                 .style(appStyle: .barButton)
                 .foregroundColor(.acText)
         })
-            .buttonStyle(BorderedBarButtonStyle())
-            .accentColor(Color.acText.opacity(0.2))
-            .safeHoverEffectBarItem(position: .leading)
+        .buttonStyle(BorderedBarButtonStyle())
+        .accentColor(Color.acText.opacity(0.2))
+        .safeHoverEffectBarItem(position: .leading)
     }
 
     var body: some View {
         NavigationView {
             Form {
                 Section(header: SectionHeaderView(text: "App Settings")) {
-                    Toggle(isOn: $appUserDefaults.hasLetsGetToKnowYou) {
-                        Text("Toggle lets get to know you")
+                    Toggle(isOn: $appUserDefaults.showOnBoarding) {
+                        Text("Toggle onBoardingView")
                     }
                 }
             }

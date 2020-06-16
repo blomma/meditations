@@ -2,6 +2,12 @@ import Foundation
 import SwiftUI
 
 struct OnBoardingView: View {
+    // TODO: This is a bug in swiftui, unless we add this, i.e. the presenting view, when we return the navigationbuttons cant be pushed again.
+    // I think this happens because the presentationMode is not inherited from the presenter view, so the presenter didn't know that the modal is already closed. You can fix this by adding presentationMode to presenter, in this case to ContentView.
+    @Environment(\.presentationMode) var presentation
+
+    @ObservedObject var appUserDefaults = AppUserDefaults.shared
+
     @ObservedObject private var viewModel: OnBoardingViewModel = OnBoardingViewModel()
     @State private var index: Int = 0
 
@@ -15,6 +21,19 @@ struct OnBoardingView: View {
                             self.index = index
                         }
                     }
+                }
+                if viewModel.showDone {
+                    Button(action: {
+                        self.appUserDefaults.showOnBoarding = false
+                    }, label: {
+                        Image(systemName: "wind")
+                            .style(appStyle: .barButton)
+                            .foregroundColor(.acText)
+                    })
+                    .buttonStyle(BorderedBarButtonStyle())
+                    .accentColor(Color.acText.opacity(0.2))
+                    .safeHoverEffectBarItem(position: .leading)
+                        .padding(.leading, 20)
                 }
             }
             .padding(.bottom, 12)

@@ -4,8 +4,8 @@ import Foundation
 public class AppUserDefaults: ObservableObject {
     public static let shared = AppUserDefaults()
 
-    @UserDefault("done_letsgettoknowyou", defaultValue: false)
-    public var hasLetsGetToKnowYou: Bool {
+    @UserDefault("showOnboarding", defaultValue: true)
+    public var showOnBoarding: Bool {
         willSet {
             objectWillChange.send()
         }
