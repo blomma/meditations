@@ -21,6 +21,7 @@ struct RootView: View {
         }
         .sheet(item: $selectedSheet,
                content: { Sheet(sheetType: $0) })
+        .background(Color.acBackground)
     }
 }
 

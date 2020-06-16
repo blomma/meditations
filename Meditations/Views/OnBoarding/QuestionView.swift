@@ -10,8 +10,6 @@ struct QuestionView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-//            subsectionHeader(header)
-//                .padding(.top, 4)
             makeLabel(question.label)
                 .padding(.vertical, 8)
             Picker(selection: $rating,
@@ -24,14 +22,6 @@ struct QuestionView: View {
             .labelsHidden()
         }
     }
-
-//    private func subsectionHeader(_ text: String) -> some View {
-//        Text(LocalizedStringKey(text))
-//            .font(.system(.caption, design: .rounded))
-//            .fontWeight(.bold)
-//            .foregroundColor(Color.acSecondaryText)
-//            .padding(.top, 4)
-//    }
 
     private func makeLabel(_ text: String) -> some View {
         Text(LocalizedStringKey(text))
@@ -47,10 +37,6 @@ struct QuestionView_Previews: PreviewProvider {
     @State static var r: Rating = .one
 
     static var previews: some View {
-        Form {
-            QuestionView(question: q, rating: $r, header: "test")
-        }
-        .listStyle(GroupedListStyle())
-        .environment(\.horizontalSizeClass, .regular)
+        QuestionView(question: q, rating: $r, header: "test")
     }
 }

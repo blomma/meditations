@@ -13,18 +13,35 @@ struct SwiperView: View {
                 HStack(alignment: .center, spacing: 0) {
                     if self.viewModel.noOfPages > 0 {
                         ForEach(1...self.viewModel.pageProgress, id: \.self) { page in
-                            VStack {
-                                ForEach(self.viewModel.questions(for: page)) { question in
-                                    QuestionView(
-                                        question: question,
-                                        rating: self.$viewModel.ratings[unchecked: question.id],
-                                        header: self.viewModel.header(for: question)
-                                    )
-                                    .padding()
+                            ZStack {
+                                Image("BackgroundImage")
+                                    .resizable()
+                                    .clipped()
+                                    .opacity(0.5)
+                                VStack {
+                                    ForEach(self.viewModel.questions(for: page)) { question in
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 20)
+                                            .stroke(Color.accentColor, lineWidth: 2)
+                                                .opacity(0.4)
+                                            
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .foregroundColor(Color.accentColor)
+                                                .opacity(0.2)
+                                    
+                                            QuestionView(
+                                                question: question,
+                                                rating: self.$viewModel.ratings[unchecked: question.id],
+                                                header: self.viewModel.header(for: question)
+                                            )
+                                            .padding()
+                                        }
+                                        .padding()
+                                        .fixedSize(horizontal: false, vertical: true)
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
                             }
-                            .padding()
                             .frame(width: geometry.size.width,
                                    height: geometry.size.height)
                         }

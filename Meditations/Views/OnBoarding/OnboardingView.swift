@@ -12,7 +12,7 @@ struct OnBoardingView: View {
     @State private var index: Int = 0
 
     var body: some View {
-        VStack {
+        ZStack(alignment: .bottom) {
             SwiperView(viewModel: self.viewModel, index: self.$index)
             HStack(spacing: 8) {
                 ForEach(0 ... (self.viewModel.pageProgress - 1), id: \.self) { index in
@@ -36,7 +36,7 @@ struct OnBoardingView: View {
                         .padding(.leading, 20)
                 }
             }
-            .padding(.bottom, 12)
+            .padding(.bottom, 20)
         }
         .background(Color.acBackground)
         .environment(\.horizontalSizeClass, .regular)
